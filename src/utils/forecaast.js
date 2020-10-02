@@ -23,13 +23,15 @@ const forecast = (
         const { message } = result;
         callback({ message });
       } else {
+        console.log(result.main);
         const { temp } = result.main;
         const { humidity } = result.main;
+        const { temp_min: low, temp_max: high } = result.main;
         // const { name } = result;
         callback(
           `The current weather forecast at ${formatPlace(
             place
-          )} has the temperature at ${temp} with a humidity of ${humidity} `
+          )} has the temperature at ${temp} with a humidity of ${humidity}. At it's lowest today we'll be having a temperature of about ${high} degrees and in contrast we'll be having ${low} degrees. Not that much of a change though `
         );
       }
     })
